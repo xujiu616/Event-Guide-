@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏活动攻略大全</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            min-height: 90vh;
+        }
+        
+        /* 左侧导航栏样式 */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            color: #fff;
+            overflow-y: auto;
+            height: 90vh;
+            position: sticky;
+            top: 0;
+            border-right: 3px solid #3498db;
+        }
+        
+        .sidebar h2 {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(26, 37, 47, 0.8);
+            margin-bottom: 10px;
+            font-size: 24px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .search-box {
+            padding: 0 20px 15px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #3d566e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .activity-item:hover {
+            background-color: #34495e;
+            transform: translateX(5px);
+        }
+        
+        .activity-item.active {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            font-weight: bold;
+            box-shadow: inset 3px 0 0 #fff;
+        }
+        
+        .activity-item::before {
+            content: "▶";
+            margin-right: 10px;
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .activity-item.active::before {
+            transform: rotate(90deg);
+        }
+        
+        /* 右侧内容区样式 */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            height: 90vh;
+            background: #fff;
+        }
+        
+        .activity-title {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 32px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .activity-title::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #e74c3c;
+        }
+        
+        .activity-title i {
+            margin-right: 15px;
+            color: #3498db;
+        }
+        
+        .activity-content {
+            line-height: 1.8;
+        }
+        
+        .activity-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .activity-section h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .activity-section h3::before {
+            content: "●";
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+        
+        .activity-section h4 {
+            color: #2c3e50;
+            margin: 15px 0 10px;
+            font-size: 18px;
+        }
+        
+        .activity-section p {
+            margin-bottom: 12px;
+        }
+        
+        /* 天生一对计算器样式 */
+        .calculator-container {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .calculator-header {
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .calculator-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .calculator-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 5px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .input-section h4 {
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .calculator-note {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ffeb3b;
+        }
+        
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .calculator-container input {
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s;
+        }
+        
+        .calculator-container input:focus {
+            border-color: #6a11cb;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+        }
+        
+        .calculator-container button {
+            background: linear-gradient(135deg, #ff9a00 0%, #ff6a00 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 4px 0 #cc7a00;
+        }
+        
+        .calculator-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #cc7a00;
+        }
+        
+        .calculator-container button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #cc7a00;
+        }
+        
+        .calculator-results {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .result-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid;
+            backdrop-filter: blur(5px);
+        }
+        
+        .primary-card {
+            border-color: #6a11cb;
+        }
+        
+        .intermediate-card {
+            border-color: #ff9800;
+        }
+        
+        .advanced-card {
+            border-color: #4caf50;
+        }
+        
+        .result-card h4 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .primary-card h4 {
+            color: #d4b5ff;
+        }
+        
+        .intermediate-card h4 {
+            color: #ffcc80;
+        }
+        
+        .advanced-card h4 {
+            color: #a5d6a7;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .item-value {
+            font-weight: 600;
+        }
+        
+        .primary-card .item-value {
+            color: #d4b5ff;
+        }
+        
+        .intermediate-card .item-value {
+            color: #ffcc80;
+        }
+        
+        .advanced-card .item-value {
+            color: #a5d6a7;
+        }
+        
+        .material-requirements {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+        
+        .material-requirements h5 {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* 修改高亮颜色为护眼绿色 */
+        .highlight {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            border-left: 3px solid #4caf50;
+        }
+        
+        /* 表格样式 */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: center;
+        }
+        
+        th {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .recommendation {
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .rating {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .tip {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .warning {
+            background: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        /* 菜谱列表样式 */
+        .recipe-list {
+            list-style-type: none;
+            margin: 15px 0;
+        }
+        
+        .recipe-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+        
+        .recipe-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .recipe-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .recipe-ingredients {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .content {
+                height: auto;
+            }
+            
+            .calculator-result ul {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-input {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .calculator-input input {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .activity-content {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .activity-item {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <div class="sidebar">
+            <h2>游戏活动攻略</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索活动...">
+            </div>
+            <ul class="activity-list" id="activityList">
+                <!-- 活动列表将通过JavaScript动态生成 -->
+            </ul>
+        </div>
+        
+        <!-- 右侧内容区 -->
+        <div class="content" id="contentArea">
+            <h1 class="activity-title" id="activityTitle">
+                请选择左侧活动查看攻略
+            </h1>
+            <div class="activity-content" id="activityContent">
+                <!-- 活动内容将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>游戏活动攻略大全 &copy; 2023 - 本攻略仅供参考，实际游戏内容以官方为准</p>
+    </footer>
+
+    <script>
+        // 冰雪圣诞绑定点券消耗倍数数据
+        const snowMultiplierData = [
+            [1,0],[2,1500],[3,3000],[4,5000],[5,7500],[6,10000],[7,13500],[8,17000],[9,21000],[10,25500],
+            [11,30000],[12,35500],[13,41000],[14,47000],[15,53500],[16,60000],[17,67500],[18,75000],[19,83000],[20,91500],
+            [21,100000],[22,109500],[23,119000],[24,129000],[25,139500],[26,150000],[27,161500],[28,173000],[29,185000],[30,197500],
+            [31,210000],[32,223500],[33,237000],[34,251000],[35,265500],[36,280000],[37,295500],[38,311000],[39,327000],[40,343500],
+            [41,360000],[42,377500],[43,395000],[44,413000],[45,431500],[46,450000],[47,469500],[48,489000],[49,509000],[50,529000]
+        ];
+
+        // 变脸寻踪点券消耗倍数数据
+        const faceMultiplierData = [
+            [1,0],[2,1000],[3,2200],[4,3600],[5,5200],[6,7000],[7,9000],[8,11200],[9,13600],[10,16200],
+            [11,19000],[12,22000],[13,25200],[14,28600],[15,32200],[16,36000],[17,40000],[18,44200],[19,48600],[20,53200],
+            [21,58000],[22,63000],[23,68200],[24,73600],[25,79200],[26,85000],[27,91000],[28,97200],[29,103600],[30,110200],
+            [31,117000],[32,124000],[33,131200],[34,138600],[35,146200],[36,154000],[37,162000],[38,170200],[39,178600],[40,187200],
+            [41,196000],[42,205000],[43,214200],[44,223600],[45,233200],[46,243000],[47,253000],[48,263200],[49,273600],[50,284200]
+        ];
+
+        // 活动数据
+        const activities = [
+            {
+                id: 1,
+                title: "年夜饭",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>农历新年</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>消费绑定点券购买材料开启酒席获得积分，积分达标可获得档位奖励。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">核心选择：</span>开启酒席时，务必选择"满汉全席"。完成一次需消费5000绑定点券，可获得1000活动积分。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>核心目标</h3>
+                        <p>15,000积分（需消费约75W绑定）：可获得一套年夜饭专属服饰。</p>
+                        <p>30,000积分（需消费约150W绑定）：可获得春节全新坐骑图鉴。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>重要提示</h3>
+                        <p>上述专属奖励一旦错过，后续补回成本极高（125W点券+5000RMB返利）。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>副产物价值</h3>
+                        <p>开启"满汉全席"同时可获得大量消耗品（翠玉/苍玉碎片、铭刻石、七宝烛、半神宠物初级碎片），对中后期养老玩家提升铭刻和灵玉有较高价值。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩家策略</h3>
+                        <p><span class="highlight">新手/前中期玩家：</span>建议拿到坐骑图鉴（30,000积分）后收手。</p>
+                        <p><span class="highlight">中后期玩家：</span>可酌情加大投入，以获取副产物。</p>
+                        <p><span class="highlight">宠物追求者：</span>不建议为本活动的"半神宠物"投入过多，因其强度一般且存在性价比更高的获取渠道。若投入，建议至少拿下15,000积分档位的服饰。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★★★</span> (血赚，可以为了该活动提前规划自身资源)</p>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "天生一对",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>情人节、农历七夕</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>活动分为"个人成就"和"情侣宠物总等级"两部分，主要收益在于排名奖励（个人前10得宠物形态，总等级前10得服饰图鉴）。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <h4>个人成就部分：</h4>
+                        <p><span class="highlight">任务类型：</span>包括赏月、婚礼、竞技、赠送/接受礼物等。</p>
+                        <p><span class="highlight">冲刺前10关键：</span>需要完成"赏月"和"低级婚礼"任务，极端情况下需完成"中级婚礼"。注意婚礼冷却2小时，赏月冷却1小时。</p>
+                        <p><span class="highlight">重要前提：</span>必须领养宠物，否则无法完成大部分成就任务。</p>
+                        <p><span class="highlight">赠送技巧：</span>每天用小号给大号送10个"大钻戒"（最贵），大号给小号回送10封"真挚情书"（最便宜）。</p>
+                        <p><span class="highlight">卡点时机：</span>活动最后三天（通常是周日）会刷新"宠物等级进入前XX名"任务，务必在周六晚23:59准备好，卡点抢先喂养，此任务积分极高，错过难以弥补。</p>
+                        
+                        <h4>情侣宠物总等级部分：</h4>
+                        <p><span class="highlight">升级方式：</span>喂养"礼物盒"提升等级。礼物盒通过每日任务或消费绑定点券购买材料包合成。</p>
+                        <p><span class="highlight">冲刺前10策略：</span></p>
+                        <p>准备绑定点券购买"零食大礼包"合成礼物。</p>
+                        <p><span class="highlight">等级优先：</span>排名先看总等级，同等级才看经验。双方平均投入提升等级，效率最高（经验需求递增）。</p>
+                        <p><span class="highlight">等级参考：</span>在竞争激烈的4399平台，总等级达到80级有很大概率进入前10。按40+40计算，双方各需投入约100W绑定。300w绑定刚好60级</p>
+                        <p><span class="highlight">奖励取舍：</span>确保进入前10拿到图鉴即可，其他物品性价比一般。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="highlight">竞争激烈区：</span> <span class="rating">★★★☆☆</span> (性价比中，资源充裕的玩家可考虑)</p>
+                        <p><span class="highlight">竞争平缓区：</span> <span class="rating">★★★★☆</span> (性价比高，有资源可投入)</p>
+                    </div>
+                    
+                    <!-- 天生一对礼物合成计算器 -->
+                    <div class="calculator-container">
+                        <div class="calculator-header">
+                            <h3>天生一对活动道具合成计算器</h3>
+                            <p class="calculator-subtitle">根据您现有的材料数量，独立计算可合成的初级、中级和高级礼物</p>
+                        </div>
+                        
+                        <div class="input-section">
+                            <h4>请输入您现有的材料数量</h4>
+                            <div class="calculator-note">
+                                <strong>说明：</strong> 各等级礼物独立计算，不互相影响材料使用。只需输入零食礼包数量，即可计算各等级礼物合成情况。
+                            </div>
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="snackPacks">零食礼包</label>
+                                    <input type="number" id="snackPacks" min="0" value="1000">
+                                </div>
+                                <div class="input-group">
+                                    <label for="chocolates">精装巧克力 (可选)</label>
+                                    <input type="number" id="chocolates" min="0" value="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="roseBouquets">玫瑰花束 (可选)</label>
+                                    <input type="number" id="roseBouquets" min="0" value="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="loveLetters">真挚情书 (可选)</label>
+                                    <input type="number" id="loveLetters" min="0" value="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="diamondRings">大钻戒 (可选)</label>
+                                    <input type="number" id="diamondRings" min="0" value="0">
+                                </div>
+                            </div>
+                            <button onclick="calculateGift()">计算合成方案</button>
+                        </div>
+                        
+                        <div id="giftResults" class="calculator-results">
+                            <div class="result-grid">
+                                <div class="result-card primary-card">
+                                    <h4>初级礼物合成结果</h4>
+                                    <div class="result-item">
+                                        <span class="item-name">可合成初级礼物数量</span>
+                                        <span id="primaryGifts" class="item-value">0 个</span>
+                                    </div>
+                                    <div class="material-requirements">
+                                        <h5>所需材料明细</h5>
+                                        <div class="result-item">
+                                            <span class="item-name">需要零食礼包</span>
+                                            <span id="primarySnacks" class="item-value">0 个</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="item-name">需要真挚情书</span>
+                                            <span id="primaryLoveLetters" class="item-value">0 个</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="result-card intermediate-card">
+                                    <h4>中级礼物合成结果</h4>
+                                    <div class="result-item">
+                                        <span class="item-name">可合成中级礼物数量</span>
+                                        <span id="intermediateGifts" class="item-value">0 个</span>
+                                    </div>
+                                    <div class="material-requirements">
+                                        <h5>所需材料明细</h5>
+                                        <div class="result-item">
+                                            <span class="item-name">需要零食礼包</span>
+                                            <span id="intermediateSnacks" class="item-value">0 个</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="item-name">需要真挚情书</span>
+                                            <span id="intermediateLoveLetters" class="item-value">0 个</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="item-name">需要精装巧克力</span>
+                                            <span id="intermediateChocolates" class="item-value">0 个</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="result-card advanced-card">
+                                    <h4>高级礼物合成结果</h4>
+                                    <div class="result-item">
+                                        <span class="item-name">可合成高级礼物数量</span>
+                                        <span id="advancedGifts" class="item-value">0 个</span>
+                                    </div>
+                                    <div class="material-requirements">
+                                        <h5>所需材料明细</h5>
+                                        <div class="result-item">
+                                            <span class="item-name">需要玫瑰花束</span>
+                                            <span id="advancedRoses" class="item-value">0 个</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="item-name">需要精装巧克力</span>
+                                            <span id="advancedChocolates" class="item-value">0 个</span>
+                                        </div>
+                                        <div class="result-item">
+                                            <span class="item-name">需要大钻戒</span>
+                                            <span id="advancedRings" class="item-value">0 个</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "拼夕夕",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>双11附近（确定）、劳动节（存疑）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>通过参与战斗/种植/消费获得拼图礼包，开启得碎片和积分，完成拼图得额外积分和奖励，积分可兑换物品。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">主流玩法：</span>使用绑定点券购买"高级拼图的种子"并种满，收获后再购买"高级拼图礼包"开启并拼图。成本估算：达到80,000分约需200W绑定；达到120,000分约需320W绑定（数据存在波动）。</p>
+                        <p><span class="highlight">非主流玩法：</span>储存1-2期的拼图礼包，等到次年同一活动时再使用，可显著降低开销。</p>
+                        <p><span class="highlight">积分获取：</span>每天可免费收取5个拼图碎片，但收益有限。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>关键档位</h3>
+                        <p>20000积分：半神宠天赋自选</p>
+                        <p>50000积分：极·战役之盾</p>
+                        <p>80000积分：拼夕夕专属服饰图鉴，月圆之盾</p>
+                        <p>120000积分：12周年戒指+5</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>拼图完成奖励</h3>
+                        <p><span class="highlight">初级：</span>打开可获得:碎石x15，图腾符石x5，随机获得(开孔钻头1级x5，进阶石x1)</p>
+                        <p><span class="highlight">中级：</span>打开可获得:琉璃珠x5、坐骑升级丹x10，随机获得(智慧之书*10,经验魔石x1)</p>
+                        <p><span class="highlight">高级：</span>打开可获得:信任基石x20、蜕变基石x30、经验之戒+1x2，随机获得(翡翠x15、13级属性宝珠x1)</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>兑换策略</h3>
+                        <p><span class="highlight">优先兑换：</span>武器/副手图鉴（如极·战役之盾、月圆之盾、如意金箍棒、恶魔之眼）。</p>
+                        <p><span class="highlight">不推荐：</span>消耗品，性价比低。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>投入建议</h3>
+                        <p><span class="highlight">一般玩家</span>拿到80,000分服饰后即可收手。</p>
+                        <p>若为了249武器冲到100,000分，则建议一鼓作气冲到120,000分拿下12周年戒指+5，为未来升级做准备。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，有属于自己的优势区间，资源充裕的玩家可以考虑参加)</p>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "周年庆",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>每年7月初开启，持续28天</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>通过完成每周专属任务或开启"皮皮契约"获得活动积分，积分用于参与竞拍活动获取珍稀物品。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">积分获取：</span>主要途径：完成皮皮契约、完成周年庆专属任务。</p>
+                        <p><span class="highlight">皮皮契约：</span>分三档，档位越高任务越难，非氪金玩家不建议开第三档（全是高额充值任务）。</p>
+                        
+                        <h4>皮皮契约详细任务：</h4>
+                        <p><span class="highlight">蓝色：</span>获胜1场竞技战，获胜1场宠物大作战，公会捐赠200财富，充值1000/2000点券，刷新10次吉普赛商人，开启普通副本B0SS战，活跃度达到80点，获得300公会贡献。消耗100积分奖励500积分</p>
+                        <p><span class="highlight">紫色：</span>获得3000贡献，举办一次婚礼，开通/续费会员/单王盟约，举办一次生日，会携带低战力玩家下副本获得5点弹弹荣誉，充值5000/8000/10000点券，活跃度达到140点，公会捐赠1000财富。消耗500积分奖励2500积分</p>
+                        <p><span class="highlight">金色：</span>充值200000/400000/500000/800000点券。消耗2000积分奖励20000积分</p>
+                        
+                        <p><span class="highlight">高收益任务：</span></p>
+                        <p>开启天使魔罐（20个=1000积分）：成本约10点券/积分。</p>
+                        <p>开启VIP（1个月=300积分）：成本约9.93点券/积分（用折扣券更低）。</p>
+                        <p>昆虫大作战（每6667绑定=250积分）：成本约26.6绑定/积分。</p>
+                        <p>喇叭助威（100次=100积分）：成本约5.76点券/积分（性价比最高）。</p>
+                        <p><span class="highlight">策略：</span>第一周抢图鉴可开高档皮皮契约和魔罐；后续几周优先通过"喇叭助威"获取积分，性价比最高。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>竞拍机制</h3>
+                        <p><span class="highlight">竞拍区：</span>分"固定竞拍区"（积分商城）和"轮换竞拍区"（每日刷新）。</p>
+                        <p><span class="highlight">竞拍规则：</span>每日12点和20点开始，持续1小时。有最低出价。投入积分后除非流拍，否则不退还。</p>
+                        <p><span class="highlight">幸运儿机制：</span>系统会随机抽取部分参与者直接获得物品（无视出价高低），物品数量越多，幸运儿越多。（比例，分别为物品竞拍数量的25%/50%/75%/100%）</p>
+                        <p><span class="highlight">滚动竞拍：</span>活动第28天（最后一天）在10,12,14,16,18,20点六个时段刷新物品，是竞拍高潮，需蹲点。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>竞拍策略</h3>
+                        <p><span class="highlight">物品优先级：</span>周年庆图鉴 > 周年庆武器/坐骑图鉴/宠物 > 首饰 > 宠物形态卡。普通玩家抢消耗品礼包。</p>
+                        <p><span class="highlight">出价原则：</span>可用1积分 ≈ 5.76点券的比例估算物品价值，避免溢拍。但对于唯一目标，可忽略性价比全力争取。</p>
+                        <p><span class="highlight">时间原则：</span>相同物品越早竞拍，起拍价越低。</p>
+                        <p><span class="highlight">积分处理：</span>若积分流拍，优先兑换缺乏的大件（武器、刻印），其次兑换稀有消耗品（黑曜石、蜕变晶石、信任基石）。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★★★</span> (血赚，可以为了该活动提前规划自身资源。微氪玩家亦可白嫖大量积分)</p>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "昆虫大作战",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>每年7月中旬和8月下旬（一年2次）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>消费绑定点券购买道具（网（50绑定）、捉兽球（500绑定）、甜品（300绑定））捕捉昆虫和独角仙获得积分，兑换物品。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p>分捉虫部分和兑换部分</p>
+                        
+                        <h4>捉虫部分：</h4>
+                        <p><span class="highlight">基础规则：</span>每天可进入30次，最多可50倍抓虫（节省时间）。</p>
+                        <p><span class="highlight">性价比：</span>改版后，使用网抓虫的性价比高于使用捉兽球抓独角仙。</p>
+                        <p><span class="highlight">抓虫技巧：</span></p>
+                        <p>昆虫：蜻蜓1分，蝴蝶2分，知了3分。确保一网得分≥12分为高效。</p>
+                        <p>独角仙：价值120分。出现后5回合逃跑。需先用"+2"和"三叉戟"道具攻击9次，再使用捉兽球，可100%捕捉成功。</p>
+                        
+                        <h4>资源策略：</h4>
+                        <p><span class="highlight">微氪/0氪：</span>可在第一期活动时储存一些网和球，等到同年第二期或次年使用，以极低成本兑换半神天赋箱或242武器。</p>
+                        <p><span class="highlight">大手笔投入：</span></p>
+                        <p>目标≤30W积分：基本无需买"甜品"，每天用网高效抓虫，碰到独角仙就抓即可。</p>
+                        <p>目标＞30W积分：需要购买"甜品"抓独角仙。倍数抓虫时甜品消耗也翻倍，需备足。</p>
+                        <p><span class="highlight">准备技巧：</span>每次进图前保证有150个网和50个捉兽球，用完再补，避免浪费。</p>
+                        
+                        <h4>成本计算示例：</h4>
+                        <p><span class="highlight">目标195,000分 - 3个箱子：</span></p>
+                        <p>策略：进图只网一次，保证15分/次；遇独角仙优先捕捉</p>
+                        <p>操作：翻倍50次进图，无独角仙：网一次虫子(15分)；有独角仙：第1回合打→第2回合扔球→第3回合网虫</p>
+                        <p>得分计算：基础：15分×50倍×204次 = 153,000分(51万绿)；补分：7次独角仙×120分×50倍 = 42,000分(17.5万绿)</p>
+                        <p>甜食方案：204次用甜食+6000分(4万绿) + 6次×135分×50倍=40,500分(25.5万绿)</p>
+                        <p>总成本：68.5万绿 ~ 80.5万绿</p>
+                        <p>单个箱子成本：22.9万绿 ~ 26.84万绿</p>
+                        
+                        <p><span class="highlight">目标390,000分 - 6个箱子：</span></p>
+                        <p>策略：进图网三次，平均12分/次；遇独角仙优先捕捉</p>
+                        <p>总成本：167.25万绿，单个箱子成本：27.875万绿</p>
+                        
+                        <p><span class="highlight">目标650,000分 - 10个箱子：</span></p>
+                        <p>策略：进图网三次，平均12分/次；大量用甜食捉独角仙</p>
+                        <p>总成本：353.25万绿，单个箱子成本：35.325万绿</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>兑换部分</h3>
+                        <p><span class="highlight">武器：</span>鲤鱼，喵喵喵，大针，大幻翎18000分，财源120000分，大彩妆盒135000分</p>
+                        <p><span class="highlight">魔石：</span>红二，红四200000分</p>
+                        <p><span class="highlight">天赋箱：</span>最多换10个天赋箱子，以50倍抓虫为例球+甜食一次成本4w绑定可获得6000分（土豪玩法省时间）</p>
+                        <p>神宠6.5w分一个-换满成本430w绑定左右  。乌龟要8.5w分</p>
+                        <p>半神1.2w分一个-换满成本80w绑定左右。</p>
+                        <p>老神宠4.5w分一个-换满成本300w绑定左右。</p>
+                        <p><span class="highlight">临时坐骑图鉴：</span>15000分，仅推荐顶级玩家兑换。</p>
+                        <p><span class="highlight">消耗品：</span>性价比低，不推荐。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="highlight">每年第一期：</span> <span class="rating">★★★★★</span> (血赚，与周年庆叠加，一举两得)</p>
+                        <p><span class="highlight">每年第二期：</span> <span class="rating">★★★★☆</span> (性价比高，有资源可投入)</p>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "中秋祭月",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>农历中秋</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>消费绑定点券祭月获得积分，积分达标获得档位奖励。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">核心技巧：</span>务必选择10连祭月，可节约10%成本。</p>
+                        <p><span class="highlight">奖励评价：</span>奖励经过二次迭代后表现一般。半神宠自选礼包、卓越基石、自选大神器等档位奖励，折算绑定消耗后性价比"马马虎虎"。</p>
+                        <p><span class="highlight">唯一亮点：</span>"249冰雪神杖"和"249棒棒糖"武器可通过绑定点券稳定获取。</p>
+                        <p><span class="highlight">副产物：</span>祭月获得的各类"月饼"礼包，实用性尚可（内含兽皮、七宝烛、天赋书、黑曜石、信任基石等）。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★☆☆☆</span> (性价比低，仅适合极少数人/特殊情况玩家参加。新手/前中期玩家有更好的活动选择)</p>
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                title: "幽灵大作战",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>每年10月末</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>参与战斗捕捉幽灵，消费绑定点券增幅投入的幽灵数量。按日积分排名、总积分排名和档位发放奖励。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">两种核心玩法：</span></p>
+                        
+                        <h4>目标日积分奖励（前10）：</h4>
+                        <p>需要每日充值（约120RMB）获得转盘倍数。</p>
+                        <p><span class="highlight">关键技巧：</span>卡点增幅，切勿提前，防止被偷榜。</p>
+                        <p>奖励主要为周年系列戒指和经验。</p>
+                        
+                        <h4>目标总积分奖励（冲18W分档位）：</h4>
+                        <p>需要更高额每日充值（约500RMB，7天总计3500-4000元）。</p>
+                        <p>需确保7天捕捉至少1819个幽灵（日均260个）。</p>
+                        <p>操作上，转盘倍数超过20倍即可参与战斗。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>奖励价值</h3>
+                        <p><span class="highlight">总榜18W积分：</span>奖励性价比极高，包含金5X自选刻印、自选坐骑图鉴、自选249武器、卓越晶核及海量蜕变晶石/信任基石。仅算物品价值已远超约120W的绑定消耗。</p>
+                        <p><span class="highlight">主要缺点：</span>需要3500-4000元的现金充值投入，门槛较高。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="highlight">日榜玩法：</span> <span class="rating">★★★★☆</span> (性价比高，有资源可考虑)</p>
+                        <p><span class="highlight">总榜玩法：</span> <span class="rating">★★★★☆</span> (性价比高，有资源可考虑，但需接受高额充值)</p>
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                title: "冰雪圣诞",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启时间</h3>
+                        <p>每年12月末</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>通过"堆雪人"和"雪人BOSS"活动获得雪块，消费绑定点券增幅雪块堆积雪人，达到指定数量领取奖励，部分奖励限量。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>关键档位（雪人数量）</h3>
+                        <p>5,000：自选半神宠天赋*1</p>
+                        <p>10,000：自选神宠天赋*1or 自选5K档坐骑图鉴</p>
+                        <p>15,000：必定获得吉比鹿（封印宠）</p>
+                        <p>18,000：圣诞专属服饰图鉴（限量125套）</p>
+                        <p>25,000：冰晶凤凰/远古幼龙（限量5只）</p>
+                        <p>50,000：齐天大圣/上古魔蛇（限量1只）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>绑定点券消耗倍数表</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>倍数</th>
+                                        <th>所需绑定点券</th>
+                                        <th>倍数</th>
+                                        <th>所需绑定点券</th>
+                                        <th>倍数</th>
+                                        <th>所需绑定点券</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="snowMultiplierTable">
+                                    <!-- 表格内容将通过JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>雪人BOSS（18:00开启）</h3>
+                        <p><span class="highlight">前10奖励：</span>极高（顶尖号）</p>
+                        <p><span class="highlight">11-50奖励：</span>约400雪块（高配号）</p>
+                        <p><span class="highlight">51-200奖励：</span>约300雪块（中高配号）</p>
+                        <p><span class="highlight">201-2000奖励：</span>约200雪块（普通E战号）</p>
+                        <p><span class="highlight">参与奖：</span>每日约100雪块。</p>
+                        <p>推荐开复活，伤害加成视情况。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>增幅策略</h3>
+                        <p><span class="highlight">目标鹿及以下：</span>无时间压力，可在活动后期（如第五天后）增幅。</p>
+                        <p><span class="highlight">目标限量服饰：</span>需关注剩余数量，在竞争激烈的区（如4399）可能需要提前（第四天）准备。</p>
+                        <p><span class="highlight">目标限量神宠：</span>需计算性价比。经换算，超过300W绑定拿"齐天大圣/上古魔蛇"或超过100W绑定拿"冰晶凤凰/远古幼龙"均不划算。后者仅为开图鉴，封印有更优替代品。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★★★</span> (血赚，可以为了该活动提前规划自身资源)</p>
+                    </div>
+                `
+            },
+            {
+                id: 9,
+                title: "神卡募集",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>每2周1次（可能与恶魔宝藏轮换）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>消费绑定点券进行占卜抽卡，收集卡牌组合兑换道具。粉碎多余卡牌得碎片用于合成。抽卡获得积分可领档位奖励。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">欧非判断：</span>通常以100W绑定能上"电视"（获得金/紫卡公告）10次、获得20张紫卡为标准。低于此则较"非"。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>礼包兑换策略（精选）</h3>
+                        <p><span class="highlight">三大BOSS (16.4W绑定)：</span>换自选卓越1星刻印（凑虚空4件套或幻境图录），不换17级属性宝珠（性价比极低）。</p>
+                        <p><span class="highlight">强强联合 (10.9W绑定)：</span>一般不换242武器，因"昆虫大作战"成本更低。</p>
+                        <p><span class="highlight">神兽来袭 (10.9W绑定)：</span>值得兑换自选精良5星刻印或精良3星运动印记。</p>
+                        <p><span class="highlight">齐天大圣 (13.7W绑定)：</span>不换自选半神宠天赋箱，成本高于其他渠道。</p>
+                        <p><span class="highlight">部落之首 (5.5W绑定)：</span>值得兑换自选套装服饰图鉴，性价比高。</p>
+                        <p><span class="highlight">暗黑王者 (5.5W绑定)：</span>值得兑换封印石*90，是大量获取的主要渠道。</p>
+                        <p><span class="highlight">小两口 (4.3W绑定)：</span>化神石和经验珠组合均不推荐，性价比低。</p>
+                        <p><span class="highlight">邪恶组合 (4.3W绑定)：</span>蜕变晶石/信任基石组合成本极高，不推荐，有其他更优获取渠道。</p>
+                        <p><span class="highlight">有钱人 (4.5W绑定)：</span>灵愿石/魂晶盒组合在新区有一定价值；自选精良符印礼包在符印价格高的区有價值。</p>
+                        <p><span class="highlight">会飞翔 (3.2W绑定)：</span>魂印石和灵晶/玉碎片组合均不推荐，性价比被"年夜饭"活动碾压。</p>
+                        <p><span class="highlight">神出鬼没 (2.2W绑定)：</span>铭刻石不推荐，理由同上。</p>
+                        <p><span class="highlight">小组长 (1.6W绑定)：</span>值得兑换半神器自选礼包，新手开图鉴必备。</p>
+                        <p><span class="highlight">偷鸡摸狗 (1.2W绑定)：</span>值得兑换智慧之书*180，是大批量获取的主要渠道。</p>
+                        <p><span class="highlight">习惯当炮灰 (4111绑定)：</span>值得兑换精致牛头斧/甲/帽，用于激活核心宠物天赋图鉴【天使庇护】。</p>
+                        <p><span class="highlight">零存在感/小人们：</span>有就换，物品可在"恶魔宝藏"中回收。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>抽卡策略</h3>
+                        <p><span class="highlight">策略1：</span>一次开满100W绑定（物品好时用）。</p>
+                        <p><span class="highlight">策略2：</span>一次开满80W绑定（拿完4个卓越速度水晶）。</p>
+                        <p><span class="highlight">策略3：</span>开够所需礼包即停（若已开60W且核心物品未齐，建议开到80W）。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p>无法评价 (性价比波动巨大，完全取决于账号需求和抽卡运气)</p>
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                title: "恶魔宝藏",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>每2周1次（可能与神卡募集轮换）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>购买次数抽转盘得奖励或"恶魔宝珠"，集珠兑换宝箱。开启宝箱需投骰子，点数达标可领奖或加倍，最多加倍5次。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">主要玩法误区：</span>不建议通过此活动直接获取消耗品，性价比极低。同类消耗品在"弹弹扫雷"活动中获取更划算。</p>
+                        <p><span class="highlight">核心正确玩法：</span>将平时用不到的闲置材料，在活动期间兑换成"经验首饰+3"。</p>
+                        <p><span class="highlight">可兑换物品：</span></p>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>道具名</th>
+                                        <th>经验之戒+3</th>
+                                        <th>浮游炮15天</th>
+                                        <th>能量之源</th>
+                                        <th>精良四象魔石</th>
+                                        <th>怒龙翅膀15天，四维+95</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>魔法修炼药水1级</td>
+                                        <td>48484.85</td>
+                                        <td>19393.94</td>
+                                        <td>3636.36</td>
+                                        <td>36363.64</td>
+                                        <td>19393.94</td>
+                                    </tr>
+                                    <tr>
+                                        <td>卡魂宝珠</td>
+                                        <td>3200</td>
+                                        <td>1280</td>
+                                        <td>240</td>
+                                        <td>2400</td>
+                                        <td>1280</td>
+                                    </tr>
+                                    <tr>
+                                        <td>金币箱/金币宝盒</td>
+                                        <td>8000</td>
+                                        <td>3200</td>
+                                        <td>600</td>
+                                        <td>6000</td>
+                                        <td>3200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>荣誉精华</td>
+                                        <td>3200</td>
+                                        <td>1280</td>
+                                        <td>240</td>
+                                        <td>2400</td>
+                                        <td>1280</td>
+                                    </tr>
+                                    <tr>
+                                        <td>开孔钻头1级</td>
+                                        <td>8000</td>
+                                        <td>3200</td>
+                                        <td>600</td>
+                                        <td>6000</td>
+                                        <td>3200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>经验魔石（50）</td>
+                                        <td>3200</td>
+                                        <td>1280</td>
+                                        <td>240</td>
+                                        <td>2400</td>
+                                        <td>1280</td>
+                                    </tr>
+                                    <tr>
+                                        <td>高级祭品</td>
+                                        <td>5333.33</td>
+                                        <td>2133.33</td>
+                                        <td>400.00</td>
+                                        <td>4000.00</td>
+                                        <td>2133.33</td>
+                                    </tr>
+                                    <tr>
+                                        <td>魂晶盒（小）</td>
+                                        <td>12800</td>
+                                        <td>5120</td>
+                                        <td>960</td>
+                                        <td>9600</td>
+                                        <td>5120</td>
+                                    </tr>
+                                    <tr>
+                                        <td>兽皮</td>
+                                        <td>16000</td>
+                                        <td>6400</td>
+                                        <td>1200</td>
+                                        <td>12000</td>
+                                        <td>6400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>战魂丹</td>
+                                        <td>32000</td>
+                                        <td>12800</td>
+                                        <td>2400</td>
+                                        <td>24000</td>
+                                        <td>12800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>注灵石</td>
+                                        <td>8000</td>
+                                        <td>3200</td>
+                                        <td>600</td>
+                                        <td>6000</td>
+                                        <td>3200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>灵魂石</td>
+                                        <td>16000</td>
+                                        <td>6400</td>
+                                        <td>1200</td>
+                                        <td>12000</td>
+                                        <td>6400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>碎石</td>
+                                        <td>16000</td>
+                                        <td>6400</td>
+                                        <td>1200</td>
+                                        <td>12000</td>
+                                        <td>6400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>经验珠</td>
+                                        <td>16000</td>
+                                        <td>6400</td>
+                                        <td>1200</td>
+                                        <td>12000</td>
+                                        <td>6400</td>
+                                    </tr>
+                                    <tr>
+                                        <td>天然中级宠物粮</td>
+                                        <td>53333.33</td>
+                                        <td>21333.33</td>
+                                        <td>4000.00</td>
+                                        <td>4000.00</td>
+                                        <td>21333.33</td>
+                                    </tr>
+                                    <tr>
+                                        <td>灵露丹</td>
+                                        <td>3200</td>
+                                        <td>1280</td>
+                                        <td>240</td>
+                                        <td>2400</td>
+                                        <td>1280</td>
+                                    </tr>
+                                    <tr>
+                                        <td>坐骑升级丹</td>
+                                        <td>5333.33</td>
+                                        <td>2133.33</td>
+                                        <td>400.00</td>
+                                        <td>4000.00</td>
+                                        <td>2133.33</td>
+                                    </tr>
+                                    <tr>
+                                        <td>技能升级宝珠</td>
+                                        <td>16000</td>
+                                        <td>6400</td>
+                                        <td>1200</td>
+                                        <td>12000</td>
+                                        <td>6400</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>一次活动最多可兑换20W首饰经验。</p>
+                        <p><span class="highlight">排名奖励：</span>在人少的区可适当参与，白嫖路瑟法碎片，但性价比存疑。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="highlight">获取物品：</span> <span class="rating">★★☆☆☆</span> (性价比低)</p>
+                        <p><span class="highlight">兑换物品：</span> <span class="rating">★★★★★</span> (血赚，可规划资源)</p>
+                    </div>
+                `
+            },
+            {
+                id: 11,
+                title: "铸造星云",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>每年2-3次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>组队后使用"星云熔炉"或完成任务获得积分，提升星云等级。积分可在商城购物，结束后按队伍等级发奖。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍（消费部分）</h3>
+                        <h4>个人部分：</h4>
+                        <p><span class="highlight">核心技巧：</span>每天前5个熔炉享受5折。买最贵熔炉，每天5W绑定得1000积分。7天7000积分需35W绑定。</p>
+                        <p><span class="highlight">兑换首选：</span></p>
+                        <p>半神宠玩家：投入25W绑定换5个自选半神宠天赋箱，上限10个，性价比极高。</p>
+                        <p>神宠玩家：25W绑定换1个自选神宠天赋箱，或65W绑定换2个，上限5个，性价比高于"昆虫大作战"。</p>
+                        <p><span class="highlight">武器需求：</span></p>
+                        <p>249可兑换加农神炮、收割者之镰，电玩之王，弹王金杯，需要积分10000</p>
+                        <p>242可兑换爱疯100，大针，大幻翎，需要积分3000</p>
+                        <p><span class="highlight">消耗品：</span>一般不换，若换优先"信任基石"。</p>
+                        
+                        <h4>团队部分：</h4>
+                        <p><span class="highlight">核心目标：</span></p>
+                        <p>星云等级达到1级，可获得高级祭品*200，化神石*1。</p>
+                        <p>星云等级达到2级，可获得随机宠物碎片箱*1，化神石*2。</p>
+                        <p>星云等级达到3级，可获得高级祭品*600，坐骑图鉴卡自选包*1，化神石*3。</p>
+                        <p>星云等级达到4级，可获得高级祭品*1000，星云泡泡自选包，化神石*4。</p>
+                        <p><span class="highlight">策略：</span>有能力的玩家抱团组队，平摊开销。无绿点玩家可向区服大佬购买队伍坑位。</p>
+                        <p>通常队伍组成：65w绿+65w绿+25w绿+25w绿或者35w绿*4 （每天完成白嫖任务）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★★☆</span> (性价比高，有资源去参加的话可以考虑投入)</p>
+                    </div>
+                `
+            },
+            {
+                id: 12,
+                title: "魔法裁缝铺",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>约每2个月1次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>参与副本根据回合数获得"普通绸缎"，可消费绑定进行翻倍。消费点券可获得"金色绸缎"用于制作未绑定时装。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍（消费部分）</h3>
+                        <p><span class="highlight">核心机制：</span>制作物品有概率性。投入绸缎达到需求数量的30%即可尝试制作，成功率与投入比例成正比。失败后下次成功率+5%。</p>
+                        <p><span class="highlight">推荐物品：</span>宠物天赋箱、财源滚滚武器（视情况）、衣服（外观党）。</p>
+                        <p><span class="highlight">不推荐物品：</span>随机卓越刻印（易出低星，性价比低）。</p>
+                        <p><span class="highlight">最优策略：</span></p>
+                        <p>使用普通绸缎，分别在【男性】和【女性】图标下各成功制作1个"自选神宠天赋箱"。</p>
+                        <p>成功后即可领取档位奖励中的第3个自选神宠天赋箱。</p>
+                        <p>即以相对较低的成本获得3个神宠天赋箱。</p>
+                        <p><span class="highlight">风险提示：</span>全款制作成本高于"星云"和"昆虫大作战"，此活动主打运气，脸白血赚。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，有属于自己的优势区间，适合觉得自己运气好的玩家)</p>
+                    </div>
+                `
+            },
+            {
+                id: 13,
+                title: "弹来弹去",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>约3个月2次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>投弹珠根据落点得分，可选择倍数增幅得分。积分用于抽奖。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">性价比门槛：</span>10倍。超过10倍后花费急剧上升。</p>
+                        <p><span class="highlight">推荐玩法：</span>3球2倍。每天消耗21500绑定，可获得约7500-8000积分。</p>
+                        <p><span class="highlight">收益估算：</span>积分抽奖平均每日可回血7000-10000绑定，并获得大量翡翠（核心目标）、金币箱、低级灵果、魂晶盒等，小概率出半神器。</p>
+                        <p><span class="highlight">实际成本：</span>扣除回血的绑定，相当于每日花费1-1.5W绑定获得约400翡翠。</p>
+                        <p><span class="highlight">活动定位：</span>为游戏后期追求细节的玩家提供低成本获取翡翠的渠道。绝大部分前中期玩家无需参与。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★☆☆☆</span> (性价比低，仅适合极少数追求细节的后期玩家)</p>
+                    </div>
+                `
+            },
+            {
+                id: 14,
+                title: "啵咕大转盘",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>约2个月1次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>购买"扭扭币"启动转盘游戏，获得奖品后可选择领取或"追加"。追加成功可提升奖励星级，失败则降星结束。可开启"追加保护"。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">最优策略：</span></p>
+                        <p>每次只用20扭扭币开启游戏。</p>
+                        <p>开启后进行普通追加（不開保护）。</p>
+                        <p>追加失败：稳定获得20碎片。</p>
+                        <p>追加成功：无论获得几星奖励，立刻选择"获取奖励"兑换成碎片。</p>
+                        <p><span class="highlight">收益估算：</span>2000扭扭币（100次）约可获得1-1.4W碎片。</p>
+                        <p><span class="highlight">成本估算：</span>兑换一个自选神宠天赋箱（12500碎片），实际开销约为13.5W绑定 + 2-8W点券，综合成本约17.5-29.5W绑定，性价比尚可。</p>
+                        <p><span class="highlight">缺点：</span>需要消耗部分点券，缺红点的玩家不便。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，有属于自己的优势区间，可作为"铸造星云"的替代方案)</p>
+                    </div>
+                `
+            },
+            {
+                id: 15,
+                title: "打气球",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>约3个月2次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>玩法同啵咕运动会第一关，打气球得分，10回合后选择倍数增幅分数。积分达标领奖，也可在商城兑换。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">技术建议：</span>要么不加倍，要么起步加10倍（开局送3道具），利用双倍球和道具易打出430+高分。</p>
+                        <p><span class="highlight">兑换商城：</span></p>
+                        <p>新增价值：可兑换"化神石"、"信任基石"、"蜕变晶石"，在紧缺时可作为补充渠道。</p>
+                        <p><span class="highlight">档位奖励：</span></p>
+                        <p>半神宠天赋40000分，副手自选礼包72000分，神宠天赋自选112000分，247大神器自选（琉璃标，财源，大漠）152000分</p>
+                        <p>建议要么只拿10倍低保，要么至少冲到"247武器"档位。</p>
+                        <p>中间档位性价比低。卓越灵魂碎片可通过其他渠道获取，不推荐在此硬冲。</p>
+                        <p><span class="highlight">排名奖励：</span>主要奖励"10周年项链"，对43区玩家有价值，其他区玩家无需刻意追求。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，主要价值在于补充"信任基石"和"蜕变晶石")</p>
+                    </div>
+                `
+            },
+            {
+                id: 16,
+                title: "弹王角斗场",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>可能2-3个月1次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>为8名参赛选手投票，根据其最终排名获得积分，积分兑换物品。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">两种策略（以40W绑定投2000票为例）：</span></p>
+                        <p><span class="highlight">保守策略：</span>8名选手各投250票。收益稳定，约为48750积分。兑换一个神宠天赋箱成本约32.8W绑定。</p>
+                        <p><span class="highlight">激进策略：</span>只为2-4名看好的选手投票（如4人各500票）。数学期望收益与保守策略相同，但有11/16概率收益更高，5/16概率血亏。适合能承担风险的玩家。</p>
+                        <p><span class="highlight">性价比对比：</span>此活动获取天赋箱的成本介于"昆虫大作战（用甜品）"和"铸造星云"之间，是一个不错的补充渠道。</p>
+                        <p><span class="highlight">限制：</span>每次活动兑换天赋箱数量有限（一般3个）。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，有属于自己的优势区间，但需要一定运气和风险承受能力)</p>
+                    </div>
+                `
+            },
+            {
+                id: 17,
+                title: "变脸寻踪",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>估计一年2-3次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>参与副本获得"脸谱"，记录最高一次数据（最多120）。可消费点券进行翻倍领取，每天2次。积分兑换物品。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>点券消耗倍数表</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>倍数</th>
+                                        <th>所需点券</th>
+                                        <th>倍数</th>
+                                        <th>所需点券</th>
+                                        <th>倍数</th>
+                                        <th>所需点券</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="faceMultiplierTable">
+                                    <!-- 表格内容将通过JavaScript动态生成 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍（消费部分）</h3>
+                        <p><span class="highlight">增幅原则：</span>活动持续6天（共12次），倍数是指数增长，建议每天均进行增幅以最小化总成本。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>兑换性价比分析</h3>
+                        <p><span class="highlight">2W积分（传说灵魂）：</span>需约34W点券成本。强烈推荐，性价比极高。</p>
+                        <p><span class="highlight">1W积分（坐骑图鉴）：</span>需约10.8W点券成本。性价比一般，比"代扣"便宜但比"星云"躺坑贵，缺图鉴且不想等时可考虑。</p>
+                        <p><span class="highlight">4W积分（红2/红4魔石）和10W积分（传说灵魂印记/灵宝）：</span>成本过高，不推荐。</p>
+                        <p><span class="highlight">消耗品：</span>不推荐。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="highlight">50级以上玩家：</span> <span class="rating">★★★★☆</span> (值得参加，目标拿一个传说灵魂)</p>
+                        <p><span class="highlight">其他玩家：</span> <span class="rating">★★☆☆☆</span> (量力而行，坐骑图鉴非最优选)</p>
+                    </div>
+                `
+            },
+            {
+                id: 18,
+                title: "月光宝盒",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>估计一年3-4次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>购买钥匙开启宝盒，奖励可选择保留或折算成"碎片"去商城兑换。开启5000次送一套时装。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">核心用途：</span>给顶尖大号补图鉴，特别是"电磁脉冲炮"（75伤图鉴）和部分249武器，成本低于直接找专员"代扣"。</p>
+                        <p><span class="highlight">策略：</span></p>
+                        <p>等活动最后一天（第6天）再开。</p>
+                        <p>建议大部分玩家开5000次拿保底一套时装即可，开1W次拿"圣天使"性价比不高。</p>
+                        <p>有类似但性价比更高的活动"元夕祈福"。</p>
+                        <p><span class="highlight">碎片兑换：</span></p>
+                        <p>优先换"电磁脉冲炮"。</p>
+                        <p>其次看249武器能否凑成套。</p>
+                        <p>坐骑图鉴、宠物形态卡视需求。</p>
+                        <p>消耗品最后考虑。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★☆☆☆</span> (性价比一般，仅适合有补图鉴需求的顶尖号)</p>
+                    </div>
+                `
+            },
+            {
+                id: 19,
+                title: "啵咕国王的晚餐",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>一年2次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>使用绑定购买原材料制作食品供奉给国王，供奉次数达标领奖。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">核心玩法：</span>白嫖。找靠谱食谱，每天用小号做好菜赠送给大号（要求V6+8000四维）。</p>
+                        <p><span class="highlight">无小号成本：</span>每天最多花300绑定买材料，30天总成本9000绑定。</p>
+                        <p><span class="highlight">奖励价值：</span>包含临时图鉴、称号、高级/普通道具自选礼包、橘橘国王碎片等，价值远超投入。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>菜谱</h3>
+                        <ul class="recipe-list">
+                            <li class="recipe-item">
+                                <div class="recipe-name">培根意式蛋饼</div>
+                                <div class="recipe-ingredients">2培根，3奶酪，3蛋，2牛奶</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">番茄肉酱意面</div>
+                                <div class="recipe-ingredients">3番茄，3土豆，3面粉，1牛肉</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">芝士焗土豆泥</div>
+                                <div class="recipe-ingredients">4土豆，2面粉，2口菇，2奶酪</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">培根风琴烤土豆</div>
+                                <div class="recipe-ingredients">4土豆，4培根，1面粉，1生菜</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">罗宋汤</div>
+                                <div class="recipe-ingredients">4牛肉，4番茄，1面粉，1洋葱</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">凯撒沙拉</div>
+                                <div class="recipe-ingredients">5奶酪，3生菜，1鸡蛋，1培根，2华夫饼</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">华夫饼</div>
+                                <div class="recipe-ingredients">2面粉，1奶酪，3牛奶，4鸡蛋</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">干层面</div>
+                                <div class="recipe-ingredients">4面粉，4奶酪，1牛肉，1洋葱</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">至尊披萨</div>
+                                <div class="recipe-ingredients">4面粉，1培根，3奶酪，2口菇</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">奶油培根蘑菇意面</div>
+                                <div class="recipe-ingredients">4面粉，3口菇，1牛奶，2培根</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">牛肉汉堡</div>
+                                <div class="recipe-ingredients">3面粉，2牛肉，2洋葱，3生菜</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">芝士吐司</div>
+                                <div class="recipe-ingredients">4奶酪，4牛奶，1番茄，1面粉</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">出豆煎蛋饼</div>
+                                <div class="recipe-ingredients">5面粉，3洋葱，1鸡蛋，1土豆</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">烩牛肉</div>
+                                <div class="recipe-ingredients">3牛肉，3番茄，3口菇，1洋葱</div>
+                            </li>
+                            <li class="recipe-item">
+                                <div class="recipe-name">乳酪欧姆蛋</div>
+                                <div class="recipe-ingredients">4面粉，2洋葱，2鸡蛋，2口菇</div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★★★</span> (血赚，每个人都应该参与)</p>
+                    </div>
+                `
+            },
+            {
+                id: 20,
+                title: "矿洞寻宝",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>每年2-3次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>消费绑定点券/点券进行初级/高级矿洞探索。奖励可领取或折算成"矿石"兑换物品。有保底和个人/全服进度奖励。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <h4>初级矿洞（花绑定）：</h4>
+                        <p><span class="highlight">策略：</span>除卓越晶核和9周年手链外，其他奖励均建议换成矿石。</p>
+                        <p><span class="highlight">目标：</span>玩120W绑定（5000次），可拿750个自选道具包、1个神宠天赋箱及大量矿石，兑换"重铸石"等，性价比略高于商城直购。</p>
+                        <p><span class="highlight">盈亏线：</span>500抽后矿石+兑换物总价值若低于6000矿石（约12W绑定价值）则算亏。</p>
+                        
+                        <h4>高级矿洞（花点券）：</h4>
+                        <p><span class="highlight">策略：</span>保留传说灵宝、267武器、红2/4、幸运晶核、新灵玉等大件，其他换矿石。</p>
+                        <p><span class="highlight">性价比：</span>拿大件物品的性价比一般，不稳定，可能不如直接找商人买返利。</p>
+                        <p><span class="highlight">总体评价：</span>活动有保底是进步，但拿大件性价比一言难尽，中规中矩。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，主要看运气)</p>
+                    </div>
+                `
+            },
+            {
+                id: 21,
+                title: "小小飞行家",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>约每月1次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>参与活动得"棒棒糖"，存起来后消费点券增幅，获得档位和排名奖励。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍</h3>
+                        <p><span class="highlight">两种主要目标：</span></p>
+                        <p><span class="highlight">红2/红4魔石：</span>冲8W分，成本约100W绑定，需压哨增幅争前5。</p>
+                        <p><span class="highlight">临时坐骑图鉴：</span>冲5000分，成本约2W绑定，可顺带争31-50名拿经验珠。</p>
+                        <p><span class="highlight">不推荐目标：</span></p>
+                        <p>绿悠悠（约45W绑定）：作为封印宠，圣诞"吉比鹿"性价比更高。</p>
+                        <p>大手机（约250W绑定）：武器本身鸡肋，且开"震古烁今"图鉴有更优组合。</p>
+                        <p><span class="highlight">核心价值：</span>对于需要维持临时图鉴的大号来说，性价比极高。普通玩家应先打好基础。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★☆☆</span> (性价比中，对有续临时图鉴需求的大号价值更高)</p>
+                    </div>
+                `
+            },
+            {
+                id: 22,
+                title: "绿动奇迹",
+                content: `
+                    <div class="activity-section">
+                        <h3>开启频率</h3>
+                        <p>估计一年2次</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>内容简介</h3>
+                        <p>参与副本得"绿色能量"，记录最高数据（最多120）。消费绑定点券翻倍领取，每天2次。能量用于种植兑换物品。（可视为"变脸寻踪"的绑定版）</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>玩法介绍（消费部分）</h3>
+                        <p><span class="highlight">增幅原则：</span>同"变脸寻踪"，持续7天（共14次），每天增幅以优化总成本。</p>
+                        <p><span class="highlight">种植礼包（核心）：</span></p>
+                        <p>梭梭树礼包（230武器）：白嫖可得。</p>
+                        <p>沙棘礼包（半神天赋）：约3W绑定，性价比高。</p>
+                        <p>红柳礼包（神宠天赋）：约20W绑定，性价比极高。</p>
+                        <p>榆树礼包（10周年手链）：约30W绑定，对43区玩家是良机。</p>
+                        <p><span class="highlight">森林小店：</span></p>
+                        <p>捣蛋鬼武器：约60W绑定，是最良心的获取渠道。</p>
+                        <p>神宠天赋箱：种红柳更划算。</p>
+                        <p>消耗品：一般不推荐。</p>
+                    </div>
+                    
+                    <div class="activity-section">
+                        <h3>推荐指数</h3>
+                        <p><span class="rating">★★★★☆</span> (值得参加，目标天赋、10周年手链或捣蛋鬼的玩家必玩)</p>
+                    </div>
+                `
+            }
+        ];
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 生成活动列表
+            const activityList = document.getElementById('activityList');
+            activities.forEach(activity => {
+                const listItem = document.createElement('li');
+                listItem.className = 'activity-item';
+                listItem.innerHTML = activity.title;
+                listItem.addEventListener('click', () => showActivity(activity.id));
+                activityList.appendChild(listItem);
+            });
+            
+            // 默认显示第一个活动
+            if (activities.length > 0) {
+                showActivity(activities[0].id);
+            }
+            
+            // 搜索功能
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const activityItems = document.querySelectorAll('.activity-item');
+                
+                activityItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 显示活动内容
+        function showActivity(activityId) {
+            const activity = activities.find(a => a.id === activityId);
+            if (!activity) return;
+            
+            // 更新活动标题
+            document.getElementById('activityTitle').innerHTML = activity.title;
+            
+            // 更新活动内容
+            document.getElementById('activityContent').innerHTML = activity.content;
+            
+            // 更新活动列表中的选中状态
+            const activityItems = document.querySelectorAll('.activity-item');
+            activityItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.textContent.includes(activity.title)) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // 如果是"天生一对"活动，初始化计算器
+            if (activityId === 2) {
+                calculateGift();
+            }
+            
+            // 如果是"冰雪圣诞"活动，生成倍数表格
+            if (activityId === 8) {
+                generateSnowMultiplierTable();
+            }
+            
+            // 如果是"变脸寻踪"活动，生成倍数表格
+            if (activityId === 17) {
+                generateFaceMultiplierTable();
+            }
+            
+            // 滚动到顶部
+            document.getElementById('contentArea').scrollTop = 0;
+        }
+
+        // 天生一对礼物合成计算器
+        function calculateGift() {
+            // 获取输入值
+            const snackPacks = parseInt(document.getElementById('snackPacks').value) || 0;
+            const chocolates = parseInt(document.getElementById('chocolates').value) || 0;
+            const roseBouquets = parseInt(document.getElementById('roseBouquets').value) || 0;
+            const loveLetters = parseInt(document.getElementById('loveLetters').value) || 0;
+            const diamondRings = parseInt(document.getElementById('diamondRings').value) || 0;
+            
+            // 计算材料成本（用零食礼包表示）
+            const loveLetterCost = 5; // 真挚情书 = 5个零食礼包
+            
+            // 玫瑰花束 = 10个零食礼包 + 2个真挚情书 = 10 + 2*5 = 20
+            const roseBouquetCost = 10 + 2 * loveLetterCost;
+            
+            // 精装巧克力 = 15个零食礼包 + 2个玫瑰花束 = 15 + 2*20 = 55
+            const chocolateCost = 15 + 2 * roseBouquetCost;
+            
+            // 大钻戒 = 20个零食礼包 + 15个真挚情书 + 2个精装巧克力 = 20 + 15*5 + 2*55 = 205
+            const diamondRingCost = 20 + 15 * loveLetterCost + 2 * chocolateCost;
+            
+            // 计算礼物成本（用零食礼包表示）
+            // 初级礼物 = 3个零食礼包 + 1个真挚情书 = 3 + 5 = 8
+            const primaryGiftCost = 3 + loveLetterCost;
+            
+            // 中级礼物 = 10个零食礼包 + 3个真挚情书 + 1个精装巧克力 = 10 + 3*5 + 55 = 80
+            const intermediateGiftCost = 10 + 3 * loveLetterCost + chocolateCost;
+            
+            // 高级礼物 = 3个玫瑰花束 + 2个精装巧克力 + 1个大钻戒 = 3*20 + 2*55 + 205 = 375
+            const advancedGiftCost = 3 * roseBouquetCost + 2 * chocolateCost + diamondRingCost;
+            
+            // 计算等效零食礼包数量（将其他材料转换为等效的零食礼包）
+            const equivalentSnacks = snackPacks + 
+                                    loveLetters * loveLetterCost + 
+                                    roseBouquets * roseBouquetCost + 
+                                    chocolates * chocolateCost + 
+                                    diamondRings * diamondRingCost;
+            
+            // 计算最大合成数量
+            const primaryGifts = Math.floor(equivalentSnacks / primaryGiftCost);
+            const intermediateGifts = Math.floor(equivalentSnacks / intermediateGiftCost);
+            const advancedGifts = Math.floor(equivalentSnacks / advancedGiftCost);
+            
+            // 计算各等级礼物所需材料
+            const primarySnacks = primaryGifts * 3;
+            const primaryLoveLetters = primaryGifts * 1;
+            
+            const intermediateSnacks = intermediateGifts * 10;
+            const intermediateLoveLetters = intermediateGifts * 3;
+            const intermediateChocolates = intermediateGifts * 1;
+            
+            const advancedRoses = advancedGifts * 3;
+            const advancedChocolates = advancedGifts * 2;
+            const advancedRings = advancedGifts * 1;
+            
+            // 更新显示结果
+            document.getElementById('primaryGifts').textContent = primaryGifts + ' 个';
+            document.getElementById('primarySnacks').textContent = primarySnacks + ' 个';
+            document.getElementById('primaryLoveLetters').textContent = primaryLoveLetters + ' 个';
+            
+            document.getElementById('intermediateGifts').textContent = intermediateGifts + ' 个';
+            document.getElementById('intermediateSnacks').textContent = intermediateSnacks + ' 个';
+            document.getElementById('intermediateLoveLetters').textContent = intermediateLoveLetters + ' 个';
+            document.getElementById('intermediateChocolates').textContent = intermediateChocolates + ' 个';
+            
+            document.getElementById('advancedGifts').textContent = advancedGifts + ' 个';
+            document.getElementById('advancedRoses').textContent = advancedRoses + ' 个';
+            document.getElementById('advancedChocolates').textContent = advancedChocolates + ' 个';
+            document.getElementById('advancedRings').textContent = advancedRings + ' 个';
+            
+            // 显示结果区域
+            document.getElementById('giftResults').style.display = 'block';
+        }
+
+        // 生成冰雪圣诞绑定点券消耗倍数表格
+        function generateSnowMultiplierTable() {
+            const tableBody = document.getElementById('snowMultiplierTable');
+            tableBody.innerHTML = '';
+            
+            for (let i = 0; i < snowMultiplierData.length; i += 3) {
+                const row = document.createElement('tr');
+                
+                for (let j = 0; j < 3; j++) {
+                    if (i + j < snowMultiplierData.length) {
+                        const [multiplier, cost] = snowMultiplierData[i + j];
+                        
+                        const multiplierCell = document.createElement('td');
+                        multiplierCell.textContent = multiplier;
+                        
+                        const costCell = document.createElement('td');
+                        costCell.textContent = cost.toLocaleString();
+                        
+                        row.appendChild(multiplierCell);
+                        row.appendChild(costCell);
+                    }
+                }
+                
+                tableBody.appendChild(row);
+            }
+        }
+
+        // 生成变脸寻踪点券消耗倍数表格
+        function generateFaceMultiplierTable() {
+            const tableBody = document.getElementById('faceMultiplierTable');
+            tableBody.innerHTML = '';
+            
+            for (let i = 0; i < faceMultiplierData.length; i += 3) {
+                const row = document.createElement('tr');
+                
+                for (let j = 0; j < 3; j++) {
+                    if (i + j < faceMultiplierData.length) {
+                        const [multiplier, cost] = faceMultiplierData[i + j];
+                        
+                        const multiplierCell = document.createElement('td');
+                        multiplierCell.textContent = multiplier;
+                        
+                        const costCell = document.createElement('td');
+                        costCell.textContent = cost.toLocaleString();
+                        
+                        row.appendChild(multiplierCell);
+                        row.appendChild(costCell);
+                    }
+                }
+                
+                tableBody.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>
