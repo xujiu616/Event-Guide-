@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏活动</title>
+    <title>游戏活动攻略小全</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -181,7 +181,7 @@
             margin-bottom: 12px;
         }
         
-        /* 天生一对计算器样式 */
+        /* 天生一对计算器样式 - 整合后的样式 */
         .calculator-container {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             border-radius: 15px;
@@ -388,6 +388,45 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
+        /* 天生一对计算器表单样式 */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .calculator-container input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            display: none;
+            color: white;
+        }
+        
+        .result h2 {
+            margin-top: 0;
+            color: white;
+        }
+        
+        .result p {
+            margin: 5px 0;
+        }
+        
         /* 修改高亮颜色为护眼绿色 */
         .highlight {
             background-color: #e8f5e9;
@@ -587,7 +626,7 @@
     </div>
     
     <footer>
-        <p>游戏活动攻略 &copy; 2025 - 本攻略仅供参考，实际游戏内容以官方为准</p>
+        <p>游戏活动攻略小全 &copy; 2025 - 本攻略仅供参考，实际游戏内容以官方为准</p>
     </footer>
 
     <script>
@@ -701,107 +740,41 @@
                     <div class="calculator-container">
                         <div class="calculator-header">
                             <h3>天生一对活动道具合成计算器</h3>
-                            <p class="calculator-subtitle">根据您现有的材料数量，独立计算可合成的初级、中级和高级礼物</p>
+                            <p class="calculator-subtitle">根据您现有的材料数量，计算可以合成的高级礼物数量</p>
                         </div>
                         
-                        <div class="input-section">
-                            <h4>请输入您现有的材料数量</h4>
-                            <div class="calculator-note">
-                                <strong>说明：</strong> 各等级礼物独立计算，不互相影响材料使用。只需输入零食礼包数量，即可计算各等级礼物合成情况。
+                        <form id="calculator-form">
+                            <div class="input-section">
+                                <h4>请输入您现有的材料数量</h4>
+                                <div class="calculator-note">
+                                    <strong>说明：</strong> 计算器将根据您当前拥有的材料数量，计算可以合成的最大高级礼物数量。
+                                </div>
+                                <div class="input-grid">
+                                    <div class="form-group">
+                                        <label for="snack">零食礼包数量:</label>
+                                        <input type="number" id="snack" value="1659" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="letter">真挚情书数量:</label>
+                                        <input type="number" id="letter" value="30" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="chocolate">精装巧克力数量:</label>
+                                        <input type="number" id="chocolate" value="8" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rose">玫瑰花束数量:</label>
+                                        <input type="number" id="rose" value="12" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ring">大钻戒数量:</label>
+                                        <input type="number" id="ring" value="1" min="0" required>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="calculateGift()">计算</button>
                             </div>
-                            <div class="input-grid">
-                                <div class="input-group">
-                                    <label for="snackPacks">零食礼包</label>
-                                    <input type="number" id="snackPacks" min="0" value="1000">
-                                </div>
-                                <div class="input-group">
-                                    <label for="chocolates">精装巧克力 (可选)</label>
-                                    <input type="number" id="chocolates" min="0" value="0">
-                                </div>
-                                <div class="input-group">
-                                    <label for="roseBouquets">玫瑰花束 (可选)</label>
-                                    <input type="number" id="roseBouquets" min="0" value="0">
-                                </div>
-                                <div class="input-group">
-                                    <label for="loveLetters">真挚情书 (可选)</label>
-                                    <input type="number" id="loveLetters" min="0" value="0">
-                                </div>
-                                <div class="input-group">
-                                    <label for="diamondRings">大钻戒 (可选)</label>
-                                    <input type="number" id="diamondRings" min="0" value="0">
-                                </div>
-                            </div>
-                            <button onclick="calculateGift()">计算合成方案</button>
-                        </div>
-                        
-                        <div id="giftResults" class="calculator-results">
-                            <div class="result-grid">
-                                <div class="result-card primary-card">
-                                    <h4>初级礼物合成结果</h4>
-                                    <div class="result-item">
-                                        <span class="item-name">可合成初级礼物数量</span>
-                                        <span id="primaryGifts" class="item-value">0 个</span>
-                                    </div>
-                                    <div class="material-requirements">
-                                        <h5>所需材料明细</h5>
-                                        <div class="result-item">
-                                            <span class="item-name">需要零食礼包</span>
-                                            <span id="primarySnacks" class="item-value">0 个</span>
-                                        </div>
-                                        <div class="result-item">
-                                            <span class="item-name">需要真挚情书</span>
-                                            <span id="primaryLoveLetters" class="item-value">0 个</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="result-card intermediate-card">
-                                    <h4>中级礼物合成结果</h4>
-                                    <div class="result-item">
-                                        <span class="item-name">可合成中级礼物数量</span>
-                                        <span id="intermediateGifts" class="item-value">0 个</span>
-                                    </div>
-                                    <div class="material-requirements">
-                                        <h5>所需材料明细</h5>
-                                        <div class="result-item">
-                                            <span class="item-name">需要零食礼包</span>
-                                            <span id="intermediateSnacks" class="item-value">0 个</span>
-                                        </div>
-                                        <div class="result-item">
-                                            <span class="item-name">需要真挚情书</span>
-                                            <span id="intermediateLoveLetters" class="item-value">0 个</span>
-                                        </div>
-                                        <div class="result-item">
-                                            <span class="item-name">需要精装巧克力</span>
-                                            <span id="intermediateChocolates" class="item-value">0 个</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="result-card advanced-card">
-                                    <h4>高级礼物合成结果</h4>
-                                    <div class="result-item">
-                                        <span class="item-name">可合成高级礼物数量</span>
-                                        <span id="advancedGifts" class="item-value">0 个</span>
-                                    </div>
-                                    <div class="material-requirements">
-                                        <h5>所需材料明细</h5>
-                                        <div class="result-item">
-                                            <span class="item-name">需要玫瑰花束</span>
-                                            <span id="advancedRoses" class="item-value">0 个</span>
-                                        </div>
-                                        <div class="result-item">
-                                            <span class="item-name">需要精装巧克力</span>
-                                            <span id="advancedChocolates" class="item-value">0 个</span>
-                                        </div>
-                                        <div class="result-item">
-                                            <span class="item-name">需要大钻戒</span>
-                                            <span id="advancedRings" class="item-value">0 个</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
+                        <div id="result" class="result"></div>
                     </div>
                 `
             },
@@ -1099,7 +1072,9 @@
                     
                     <div class="activity-section">
                         <h3>雪人BOSS（18:00开启）</h3>
-                        <p><span class="highlight">前10奖励：</span>极高（顶尖号）</p>
+                        <p><span class="highlight">前3奖励：</span>1000雪块,900雪块,800雪块</p>
+                        <p><span class="highlight">4-5奖励：</span>600雪块</p>
+                        <p><span class="highlight">6-10奖励：</span>500雪块</p>
                         <p><span class="highlight">11-50奖励：</span>约400雪块（高配号）</p>
                         <p><span class="highlight">51-200奖励：</span>约300雪块（中高配号）</p>
                         <p><span class="highlight">201-2000奖励：</span>约200雪块（普通E战号）</p>
@@ -1803,6 +1778,7 @@
                     </div>
                 `
             },
+
             {
                 id: 22,
                 title: "绿动奇迹",
@@ -1912,78 +1888,63 @@
             document.getElementById('contentArea').scrollTop = 0;
         }
 
-        // 天生一对礼物合成计算器
+        // 天生一对礼物合成计算器 - 使用独立计算器的逻辑
         function calculateGift() {
             // 获取输入值
-            const snackPacks = parseInt(document.getElementById('snackPacks').value) || 0;
-            const chocolates = parseInt(document.getElementById('chocolates').value) || 0;
-            const roseBouquets = parseInt(document.getElementById('roseBouquets').value) || 0;
-            const loveLetters = parseInt(document.getElementById('loveLetters').value) || 0;
-            const diamondRings = parseInt(document.getElementById('diamondRings').value) || 0;
-            
-            // 计算材料成本（用零食礼包表示）
-            const loveLetterCost = 5; // 真挚情书 = 5个零食礼包
-            
-            // 玫瑰花束 = 10个零食礼包 + 2个真挚情书 = 10 + 2*5 = 20
-            const roseBouquetCost = 10 + 2 * loveLetterCost;
-            
-            // 精装巧克力 = 15个零食礼包 + 2个玫瑰花束 = 15 + 2*20 = 55
-            const chocolateCost = 15 + 2 * roseBouquetCost;
-            
-            // 大钻戒 = 20个零食礼包 + 15个真挚情书 + 2个精装巧克力 = 20 + 15*5 + 2*55 = 205
-            const diamondRingCost = 20 + 15 * loveLetterCost + 2 * chocolateCost;
-            
-            // 计算礼物成本（用零食礼包表示）
-            // 初级礼物 = 3个零食礼包 + 1个真挚情书 = 3 + 5 = 8
-            const primaryGiftCost = 3 + loveLetterCost;
-            
-            // 中级礼物 = 10个零食礼包 + 3个真挚情书 + 1个精装巧克力 = 10 + 3*5 + 55 = 80
-            const intermediateGiftCost = 10 + 3 * loveLetterCost + chocolateCost;
-            
-            // 高级礼物 = 3个玫瑰花束 + 2个精装巧克力 + 1个大钻戒 = 3*20 + 2*55 + 205 = 375
-            const advancedGiftCost = 3 * roseBouquetCost + 2 * chocolateCost + diamondRingCost;
-            
-            // 计算等效零食礼包数量（将其他材料转换为等效的零食礼包）
-            const equivalentSnacks = snackPacks + 
-                                    loveLetters * loveLetterCost + 
-                                    roseBouquets * roseBouquetCost + 
-                                    chocolates * chocolateCost + 
-                                    diamondRings * diamondRingCost;
-            
-            // 计算最大合成数量
-            const primaryGifts = Math.floor(equivalentSnacks / primaryGiftCost);
-            const intermediateGifts = Math.floor(equivalentSnacks / intermediateGiftCost);
-            const advancedGifts = Math.floor(equivalentSnacks / advancedGiftCost);
-            
-            // 计算各等级礼物所需材料
-            const primarySnacks = primaryGifts * 3;
-            const primaryLoveLetters = primaryGifts * 1;
-            
-            const intermediateSnacks = intermediateGifts * 10;
-            const intermediateLoveLetters = intermediateGifts * 3;
-            const intermediateChocolates = intermediateGifts * 1;
-            
-            const advancedRoses = advancedGifts * 3;
-            const advancedChocolates = advancedGifts * 2;
-            const advancedRings = advancedGifts * 1;
-            
-            // 更新显示结果
-            document.getElementById('primaryGifts').textContent = primaryGifts + ' 个';
-            document.getElementById('primarySnacks').textContent = primarySnacks + ' 个';
-            document.getElementById('primaryLoveLetters').textContent = primaryLoveLetters + ' 个';
-            
-            document.getElementById('intermediateGifts').textContent = intermediateGifts + ' 个';
-            document.getElementById('intermediateSnacks').textContent = intermediateSnacks + ' 个';
-            document.getElementById('intermediateLoveLetters').textContent = intermediateLoveLetters + ' 个';
-            document.getElementById('intermediateChocolates').textContent = intermediateChocolates + ' 个';
-            
-            document.getElementById('advancedGifts').textContent = advancedGifts + ' 个';
-            document.getElementById('advancedRoses').textContent = advancedRoses + ' 个';
-            document.getElementById('advancedChocolates').textContent = advancedChocolates + ' 个';
-            document.getElementById('advancedRings').textContent = advancedRings + ' 个';
-            
-            // 显示结果区域
-            document.getElementById('giftResults').style.display = 'block';
+            const S0 = parseInt(document.getElementById('snack').value);
+            const L0 = parseInt(document.getElementById('letter').value);
+            const C0 = parseInt(document.getElementById('chocolate').value);
+            const R0 = parseInt(document.getElementById('rose').value);
+            const D0 = parseInt(document.getElementById('ring').value);
+
+            // 初始化变量
+            let A = 0;
+            let maxA = 0;
+            let snackConsumption = 0;
+
+            // 循环查找最大A值
+            while (true) {
+                A++;
+                // 计算需要合成的组件数量
+                const D_synth = Math.max(0, A - D0);
+                const C_synth = Math.max(0, 2 * A + 2 * D_synth - C0);
+                const R_synth = Math.max(0, 3 * A + 2 * C_synth - R0);
+                const L_synth = Math.max(0, 2 * R_synth + 15 * D_synth - L0);
+
+                // 计算总零食消耗
+                snackConsumption = 10 * R_synth + 15 * C_synth + 20 * D_synth + 5 * L_synth;
+
+                // 如果消耗超过库存，则退出循环
+                if (snackConsumption > S0) {
+                    maxA = A - 1;
+                    break;
+                }
+
+                // 防止无限循环
+                if (A > 1000) {
+                    maxA = A;
+                    break;
+                }
+            }
+
+            // 计算最大A时的合成数量
+            const D_synth = Math.max(0, maxA - D0);
+            const C_synth = Math.max(0, 2 * maxA + 2 * D_synth - C0);
+            const R_synth = Math.max(0, 3 * maxA + 2 * C_synth - R0);
+            const L_synth = Math.max(0, 2 * R_synth + 15 * D_synth - L0);
+
+            // 显示结果
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>计算结果</h2>
+                <p><strong>可以合成 ${maxA} 个高级礼物。</strong></p>
+                <p>在合成过程中，需要合成的各组件的数量（减去当前拥有的）如下：</p>
+                <p>需要合成 ${L_synth} 个真挚情书（当前有 ${L0} 个，合成过程中需要额外 ${L_synth} 个）。</p>
+                <p>需要合成 ${R_synth} 个玫瑰花束（当前有 ${R0} 个，合成过程中需要额外 ${R_synth} 个）。</p>
+                <p>需要合成 ${C_synth} 个精装巧克力（当前有 ${C0} 个，合成过程中需要额外 ${C_synth} 个）。</p>
+                <p>需要合成 ${D_synth} 个大钻戒（当前有 ${D0} 个，合成过程中需要额外 ${D_synth} 个）。</p>
+            `;
+            resultDiv.style.display = 'block';
         }
 
         // 生成冰雪圣诞绑定点券消耗倍数表格
